@@ -1,0 +1,1290 @@
+/* 색상 변수 */
+:root {
+    --gold: #E5B874;
+    --dark-red: #37000A;
+    --cream: #F4EBE0;
+    --white: #FFFFFF;
+    --gold-light: rgba(229, 184, 116, 0.5);
+    --dark-red-light: rgba(55, 0, 10, 0.5);
+    --overlay-dark: rgba(0, 0, 0, 0.5);
+    --overlay-medium: rgba(0, 0, 0, 0.3);
+    --overlay-heavy: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SUIT Variable', 'garamond-premier-pro', 'Nanum Myeongjo', serif;
+    font-weight: 500;
+    line-height: 1.6;
+    background-color: var(--cream);
+    color: var(--dark-red);
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 헤더 스타일 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(244, 235, 224, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(229, 184, 116, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav {
+    padding: 20px 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.logo img {
+    height: 32px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--dark-red);
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--gold);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+}
+
+/* 메인 콘텐츠 */
+.faq-main {
+    margin-top: 120px;
+    padding: 60px 0;
+}
+
+/* FAQ 헤더 */
+.faq-header {
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.faq-title {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--dark-red);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.faq-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--dark-red);
+    opacity: 0.8;
+}
+
+/* 연락처 정보 */
+.contact-info {
+    background: #FFF7ED;
+    border-radius: 20px;
+    padding: 60px 80px;
+    margin-bottom: 120px;
+    box-shadow: 0 4px 20px rgba(55, 0, 10, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* 1그리드: 고객센터 */
+.contact-item {
+    text-align: center;
+    border-right: 1px solid var(--dark-red);
+    padding-right: 40px;
+}
+
+.contact-item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.contact-item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-red);
+    margin: 0;
+}
+
+.contact-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark-red);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.contact-number:hover {
+    color: var(--gold);
+}
+
+.contact-time {
+    font-size: 14px;
+    color: var(--dark-red);
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+}
+
+/* 2그리드, 3그리드: 문의 카드 */
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-card.clickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 20px;
+    margin: -20px;
+}
+
+.contact-card.clickable:hover {
+    background: rgba(229, 184, 116, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(55, 0, 10, 0.15);
+}
+
+.contact-card.clickable:hover .contact-text h4 {
+    color: var(--gold);
+}
+
+.contact-card.clickable:hover .contact-icon img {
+    transform: scale(1.1);
+}
+
+.contact-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    pointer-events: none; /* 내부 요소들의 클릭 이벤트를 부모로 전달 */
+}
+
+.contact-icon {
+    width: 72px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.contact-text {
+    text-align: left;
+    flex: 1;
+}
+
+.contact-text h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark-red);
+    margin: 0 0 8px 0;
+    transition: color 0.3s ease;
+}
+
+.contact-text p {
+    font-size: 14px;
+    color: var(--dark-red);
+    opacity: 0.7;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* FAQ 섹션 */
+.faq-section {
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-family: 'SUIT', 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-red);
+    text-align: left;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+    margin-left: 24px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.bw-faq-item {
+    background: transparent;
+    border-bottom: 1px solid var(--dark-red);
+    transition: all 0.3s ease;
+    padding: 30px 24px;
+
+}
+
+.bw-faq-item:first-child {
+    border-top: 1px solid var(--dark-red);
+}
+
+.bw-faq-item:last-child {
+    border-bottom: 1px solid var(--dark-red);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'SUIT Variable', sans-serif;
+    color: var(--dark-red);
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--gold);
+}
+
+.faq-question.active {
+    color: var(--gold);
+}
+
+.faq-toggle {
+    width: 16px;
+    height: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+    transform: rotate(0deg);
+}
+
+.faq-toggle svg {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.faq-question.active .faq-toggle {
+    transform: rotate(180deg);
+}
+
+.faq-question:hover .faq-toggle svg rect,
+.faq-question.active .faq-toggle svg rect {
+    fill: var(--gold);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: transparent;
+
+
+}
+
+.faq-answer.active {
+    max-height: 500px;
+    padding-top: 36px;
+
+}
+
+.faq-answer-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--dark-red);
+    white-space: pre-line;
+    opacity: 0.9;
+}
+
+/* 로딩 상태 */
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--dark-red);
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--gold-light);
+    border-top: 2px solid var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 에러 상태 */
+.error {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--dark-red);
+    background: rgba(229, 184, 116, 0.1);
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+/* 모달 스타일 (index.css와 완전히 동일) */
+.preorder-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.preorder-modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.3s ease;
+}
+
+.modal-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 811px;
+    height: 100%;
+    background: var(--dark-red);
+    padding: 60px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.preorder-modal.active .modal-panel {
+    transform: translateX(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: var(--gold-light);
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--gold);
+}
+
+.preorder-form {
+    margin-top: 80px;
+}
+
+.preorder-title {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    letter-spacing: -2%;
+}
+
+.preorder-description {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--gold);
+    line-height: 1.4;
+    margin-bottom: 60px;
+}
+
+.preorder-form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: -2.3%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    border: none;
+    border-bottom: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'SUIT Variable', sans-serif;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus {
+    border-bottom-color: var(--gold-light);
+}
+
+.form-group input[type="text"]::placeholder,
+.form-group input[type="tel"]::placeholder,
+.form-group textarea::placeholder {
+    color: var(--gold-light);
+}
+
+/* 개인/기업 선택 버튼 */
+.contact-type-selection {
+    margin-bottom: 40px;
+}
+
+.contact-type-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-type-btn {
+    padding: 8px 30px;
+    border: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'SUIT Variable', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+}
+
+.contact-type-btn.active,
+.contact-type-btn:hover {
+    background: var(--gold);
+    color: var(--dark-red);
+}
+
+/* 텍스트에어리어 스타일 */
+.form-group textarea {
+    border: none;
+    border-bottom: 2px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    font-family: 'SUIT Variable', sans-serif;
+    font-size: 16px;
+    padding: 10px 0;
+    outline: none;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group textarea:focus {
+    border-bottom-color: var(--gold-light);
+}
+
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border: 2px solid var(--gold-light);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.checkbox-label input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 13px;
+    height: 13px;
+    background: var(--gold);
+    border-radius: 50%;
+}
+
+.modal-submit-btn {
+    margin-top: 40px;
+    align-self: flex-end;
+    background: var(--gold-light);
+    color: var(--dark-red-light);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.modal-submit-btn.active {
+    background: var(--gold);
+    color: var(--white);
+    border: 2px solid var(--gold);
+}
+
+.modal-submit-btn.active:hover {
+    background: var(--dark-red);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+/* 개인정보 동의 버튼 */
+.privacy-detail-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 5px 12px;
+    font-family: 'SUIT Variable', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.privacy-detail-btn:hover {
+    background: var(--gold);
+    color: var(--dark-red);
+}
+
+/* 개인정보 처리방침 모달 */
+.privacy-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.privacy-modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.privacy-modal-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    background: var(--dark-red);
+    border-radius: 15px;
+    padding: 40px;
+    overflow-y: auto;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.privacy-modal.active .privacy-modal-panel {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.privacy-modal-title {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.privacy-content {
+    margin-bottom: 30px;
+}
+
+.privacy-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--gold-light);
+}
+
+.privacy-section:last-child {
+    border-bottom: none;
+}
+
+.privacy-section h3 {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--gold);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.privacy-section p {
+    font-family: 'SUIT Variable', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--gold-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.privacy-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.privacy-modal-actions .btn {
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.btn {
+    padding: 8px 24px;
+    border: none;
+    border-radius: 30px;
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--dark-red);
+    color: var(--gold);
+    border: 2px solid var(--gold);
+}
+
+.btn-primary:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background: var(--gold-light);
+    color: var(--dark-red-light);
+    border: 2px solid transparent;
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: var(--white);
+}
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+    
+    .nav-left {
+        gap: 40px;
+    }
+    
+    .nav-menu {
+        gap: 30px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+    }
+    
+    .faq-title {
+        font-size: 40px;
+    }
+    
+    .contact-info {
+        padding: 40px 32px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .contact-item {
+        padding-right: 0;
+        padding-bottom: 30px;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-red);
+
+    }
+    
+    .modal-panel {
+        width: 100%;
+        padding: 40px 20px;
+    }
+    
+    .contact-type-buttons {
+        justify-content: center;
+    }
+    
+    .contact-type-btn {
+        flex: 1;
+        min-width: 100px;
+    }
+    
+    .preorder-title {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .preorder-description {
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .form-group label {
+        font-size: 16px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group textarea {
+        font-size: 14px;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .privacy-detail-btn {
+        align-self: flex-start;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .privacy-modal-panel {
+        width: 85%;
+        max-width: 600px;
+        padding: 30px;
+    }
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .header {
+        background: var(--cream);
+    }
+    
+    .nav {
+        padding: 15px 0;
+    }
+    
+    .nav-left {
+        gap: 20px;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+    
+    .logo img {
+        height: 28px;
+    }
+    
+    .faq-main {
+        margin-top: 80px;
+        padding: 40px 0;
+    }
+    
+    .faq-header {
+        margin-bottom: 80px;
+    }
+    
+    .faq-title {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    
+    .faq-subtitle {
+        font-size: 16px;
+    }
+    
+    .contact-info {
+        padding: 40px 20px;
+        margin-bottom: 80px;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .contact-item {
+        padding-right: 0;
+        padding-bottom: 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-red);
+        text-align: center;
+    }
+    
+    .contact-item-header {
+        align-items: center;
+    }
+    
+    .contact-time {
+        text-align: center;
+    }
+    
+    .contact-item h3 {
+        font-size: 20px;
+    }
+    
+    .contact-number {
+        font-size: 32px;
+    }
+    
+    .contact-time {
+        font-size: 16px;
+    }
+    
+    .contact-text h4 {
+        font-size: 16px;
+    }
+    
+    .contact-text p {
+        font-size: 13px;
+    }
+    
+    .contact-card.clickable {
+        padding: 16px;
+        margin: -16px;
+    }
+    
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-text {
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 20px;
+        margin-bottom: 24px;
+        margin-left: 20px;
+    }
+    
+    .faq-list {
+        gap: 0px;
+    }
+    
+    .bw-faq-item {
+        padding: 20px;
+    }
+    
+    .faq-question {
+        padding: 0;
+        font-size: 16px;
+    }
+    
+    .faq-answer.active {
+        padding-top: 24px;
+    }
+    
+    .faq-answer-content {
+        font-size: 14px;
+    }
+    
+    .modal-panel {
+        width: calc(100% - 0px);
+        max-width: 100vw;
+        padding: 20px 15px;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+    
+    .preorder-description {
+        font-size: 14px;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+    
+    .preorder-form-content {
+        gap: 20px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .checkbox-group {
+        flex-direction: column !important;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .privacy-modal-panel {
+        width: 95%;
+        max-height: 90%;
+        padding: 20px;
+    }
+    
+    .privacy-modal-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .privacy-section h3 {
+        font-size: 16px;
+    }
+    
+    .privacy-section p {
+        font-size: 14px;
+    }
+    
+    .privacy-modal-actions {
+        flex-direction: column;
+    }
+}
+
+/* 소형 모바일 */
+@media (max-width: 480px) {
+    .faq-header {
+        margin-bottom: 60px;
+    }
+    
+    .faq-title {
+        font-size: 28px;
+    }
+    
+    .contact-info {
+        padding: 32px 16px;
+        margin-bottom: 60px;
+    }
+    
+    .contact-item {
+        text-align: center;
+    }
+    
+    .contact-item-header {
+        align-items: center;
+    }
+    
+    .contact-time {
+        text-align: center;
+    }
+    
+    .contact-item h3 {
+        font-size: 18px;
+    }
+    
+    .contact-number {
+        font-size: 28px;
+    }
+    
+    .contact-time {
+        font-size: 14px;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .contact-text h4 {
+        font-size: 15px;
+    }
+    
+    .contact-text p {
+        font-size: 12px;
+    }
+    
+    .contact-card.clickable {
+        padding: 12px;
+        margin: -12px;
+    }
+    
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-text {
+        text-align: center;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        margin-left: 16px;
+    }
+    
+    .bw-faq-item {
+        padding: 16px;
+    }
+    
+    .faq-question {
+        padding: 0;
+        font-size: 15px;
+    }
+    
+    .faq-answer.active {
+        padding-top: 20px;
+    }
+    
+    .faq-answer-content {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .faq-toggle {
+        width: 14px;
+        height: 9px;
+    }
+    
+    .contact-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .contact-btn img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    /* 모바일 사전구매 모달 최적화 */
+    .modal-panel {
+        width: calc(100% - 0px);
+        max-width: 100vw;
+        padding: 20px 15px;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+    
+    .preorder-description {
+        font-size: 14px;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+    
+    .preorder-form-content {
+        gap: 20px;
+    }
+    
+    .form-group {
+        gap: 0px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="tel"] {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+    
+    .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 10px;
+    }
+    
+    .privacy-detail-btn {
+        margin-left: 0;
+        margin-top: 8px;
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+    
+    .modal-submit-btn {
+        margin-top: 25px;
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+    
+    /* 모바일 개인정보 모달 최적화 */
+    .privacy-modal-panel {
+        width: 90%;
+        max-height: 80vh;
+        padding: 20px 15px;
+        border-radius: 8px;
+    }
+    
+    .privacy-modal-title {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .privacy-section {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+    
+    .privacy-section h3 {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+    
+    .privacy-section p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+    
+    .privacy-modal-actions {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 25px;
+    }
+    
+    .privacy-modal-actions .btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    /* 모바일 모달 닫기 버튼 최적화 */
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        min-width: 60px;
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-close:hover {
+        background: var(--gold-light);
+        color: var(--dark-red);
+    }
+}

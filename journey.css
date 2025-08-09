@@ -1,0 +1,1080 @@
+/* 기본 리셋 및 변수 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+:root {
+    --gold: #E5B874;
+    --dark-red: #37000A;
+    --cream: #F4EBE0;
+    --white: #FFFFFF;
+    --gold-light: rgba(229, 184, 116, 0.5);
+    --dark-red-light: rgba(55, 0, 10, 0.5);
+    --overlay-dark: rgba(0, 0, 0, 0.5);
+    --overlay-medium: rgba(0, 0, 0, 0.3);
+    --overlay-heavy: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    font-family: 'SUIT Variable', 'garamond-premier-pro', 'Nanum Myeongjo', serif;
+    line-height: 1.6;
+    color: var(--dark-red);
+    background-color: var(--white);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.display-pc {
+    display: block;
+}
+.display-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .display-pc {
+        display: none;
+    }
+    .display-mobile {
+        display: block;
+    }
+}
+
+/* 헤더 */
+#header, .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0);
+    z-index: 1000;
+    padding: 20px 0;
+}
+
+/* ================================================== */
+/* 저니 페이지 전용 스타일 */
+/* ================================================== */
+
+/* ================================================== */
+/* 1. 히어로 섹션 */
+/* ================================================== */
+
+.journey-hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.journey-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/j-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.journey-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.journey-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.journey-hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin-top: 30vh;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.journey-hero-title {
+    text-align: center;
+}
+
+.journey-main-title {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 500;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.journey-hero-bottom {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease 0.3s;
+}
+
+/* 히어로 섹션 페이드 인 애니메이션 */
+.journey-hero.loaded .journey-hero-top {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.journey-hero.loaded .journey-hero-bottom {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================================== */
+/* 2. 저니 스텝 섹션 */
+/* ================================================== */
+
+.journey-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.journey-step {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* 호버를 지원하는 디바이스에서만 호버 효과 적용 */
+@media (hover: hover) {
+    .journey-steps:hover .journey-step:not(:hover) {
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+
+    .journey-steps:hover .journey-step:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .journey-step:hover .step-title,
+    .journey-step:hover .step-subtitle {
+        display: none;
+    }
+
+    .journey-step:hover .step-description {
+        display: block !important;
+    }
+}
+
+.step-number {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 20px;
+    line-height: 1;
+    text-align: center;
+}
+
+.step-content {
+    color: var(--gold);
+    text-align: center;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.step-title {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.step-subtitle {
+    font-family: 'SUIT', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 0;
+}
+
+.step-description {
+    font-family: 'SUIT', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--gold);
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+/* ================================================== */
+/* 3. 저니 상세 섹션 */
+/* ================================================== */
+
+.journey-detail-section {
+    position: relative;
+    transition: height 0.4s ease;
+    cursor: pointer;
+}
+
+/* 초기 상태 - 절반 높이 */
+.journey-detail-section.collapsed {
+    height: 50vh;
+    overflow: hidden;
+}
+
+/* 확장 상태 - 전체 높이 */
+.journey-detail-section.expanded {
+    height: 80vh;
+    cursor: default;
+}
+
+/* 배경 이미지 */
+.section-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+/* 오버레이 */
+.section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.journey-detail-section.expanded .section-overlay {
+    opacity: 0;
+}
+
+/* 초기 상태 컨텐츠 */
+.section-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 70px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.journey-detail-section.expanded .section-content {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.section-text-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.text-right {
+    flex: 1;
+}
+
+.text-left p,
+.text-right p {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-weight: 500;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.text-right p {
+    cursor: pointer;
+    transition: font-size 0.3s ease;
+}
+
+.text-right p:hover {
+    font-size: 52px;
+}
+
+.text-left p {
+    text-align: left;
+    flex: 2;
+    font-size: 21px;
+    font-family: 'SUIT', sans-serif;
+    font-weight: 400;
+}
+
+.text-right p {
+    text-align: right;
+    font-size: 48px;
+}
+
+/* 확장된 상태 컨텐츠 */
+.section-expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+}
+
+.journey-detail-section.expanded .section-expanded {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 확장 상태 - 3:4 비율 */
+.expanded-image {
+    flex: 3;
+    position: relative;
+    overflow: hidden;
+}
+
+.expanded-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.expanded-content {
+    flex: 4;
+    padding: 100px 140px;
+    background: #F4EBE0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+    text-align: left;
+}
+
+.symbol {
+    text-align: left;
+}
+
+.symbol img {
+    width: 80px;
+    height: auto;
+}
+
+.content-description {
+    text-align: left;
+}
+
+.content-description p {
+    font-family: 'SUIT', sans-serif;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--dark-red);
+    font-weight: 400;
+    margin: 0;
+}
+
+.content-title {
+    text-align: left;
+}
+
+.content-title h2 {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--dark-red);
+    margin: 0;
+    line-height: 1.2;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.content-title h2 span {
+    font-family: 'SUIT', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-red);
+}
+
+/* ================================================== */
+/* 4. 지역 소개 섹션 */
+/* ================================================== */
+
+.origin-section {
+    min-height: 100vh;
+    background: var(--dark-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.origin-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.origin-map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#map-container svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* SVG 마커와 원 호버 효과 */
+.world-map #canada-marker,
+.world-map #canada-circle,
+.world-map #newzealand-marker,
+.world-map #newzealand-circle {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.world-map #canada-marker:hover,
+.world-map #canada-circle:hover,
+.world-map #newzealand-marker:hover,
+.world-map #newzealand-circle:hover {
+    transform: scale(1.1);
+}
+
+/* 지역 세부 정보 */
+.region-detail {
+    position: absolute;
+    width: 800px;
+    background:#F4EBE0;
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: all 1.2s ease;
+    z-index: 10;
+    display: flex;
+    overflow: hidden;
+}
+
+.region-detail.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 뉴질랜드 - 왼쪽 배치 */
+.newzealand-detail {
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%) translateY(30px);
+    flex-direction: row;
+}
+
+.newzealand-detail.active {
+    transform: translateY(-50%);
+}
+
+/* 캐나다 - 오른쪽 배치 */
+.canada-detail {
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%) translateY(30px);
+    flex-direction: row-reverse;
+}
+
+.canada-detail.active {
+    transform: translateY(-50%);
+}
+
+.detail-image {
+    flex: 2;
+    overflow: hidden;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+.detail-content {
+    flex: 3;
+    padding: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.detail-title {
+    font-family: 'garamond-premier-pro', 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.detail-description {
+    font-family: 'SUIT', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--dark-red);
+    font-weight: 400;
+    margin: 0;
+}
+
+/* ================================================== */
+/* 5. 스크롤 인디케이터 & 애니메이션 */
+/* ================================================== */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--white);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+    opacity: 0.7;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator::before {
+    content: '';
+    width: 6px;
+    height: 10px;
+    background: var(--white);
+    border-radius: 3px;
+    animation: scroll 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* ================================================== */
+/* 6. 반응형 미디어 쿼리 */
+/* ================================================== */
+
+/* 1440px 이하 */
+@media (max-width: 1440px) {
+    .journey-main-title {
+        font-size: 60px;
+    }
+ 
+    .step-number {
+        font-size: 24px;
+    }
+    
+    .step-title {
+        font-size: 24px;
+    }
+    
+    .step-subtitle {
+        font-size: 18px;
+    }
+
+    .region-detail {
+        width: 750px;
+    }
+    
+
+    /* 뉴질랜드 - 왼쪽 배치 */
+    .newzealand-detail {
+        left: 40px;
+   
+    }
+    /* 캐나다 - 오른쪽 배치 */
+    .canada-detail {
+        right: 40px;
+  
+    }
+    
+    /* 확장된 컨텐츠 */
+    .expanded-content {
+        padding: 80px 100px;
+        gap: 50px;
+    }
+    
+    .content-description p {
+        font-size: 19px;
+    }
+    
+    .text-right p:hover {
+        font-size: 52px;
+    }
+
+}
+
+/* 1200px 이하 (태블릿) */
+@media (max-width: 1200px) {
+    /* 히어로 섹션 */
+    .journey-hero-content {
+        padding: 60px 40px;
+    }
+    
+    .journey-hero-top {
+        margin-top: 15vh;
+    }
+    
+    .journey-hero-bottom {
+        margin-bottom: 6vh;
+    }
+    
+    .journey-main-title {
+        font-size: 60px;
+    }
+    
+    /* 저니 스텝 */
+    .journey-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px 40px;
+        max-width: 800px;
+    }
+    
+    .step-number {
+        font-size: 28px;
+    }
+    
+    .step-content {
+        height: 120px;
+    }
+    
+    .step-title {
+        font-size: 24px;
+    }
+    
+    .step-subtitle {
+        font-size: 18px;
+    }
+    
+    /* 저니 상세 섹션 */
+    .section-content {
+        padding: 40px 30px;
+    }
+    
+    .text-left p {
+        font-size: 24px;
+    }
+    
+    .text-right p {
+        font-size: 28px;
+    }
+    
+    .text-right p:hover {
+        font-size: 32px;
+    }
+    
+    .expanded-content {
+        padding: 80px 60px;
+        gap: 40px;
+        text-align: left;
+    }
+    
+    .content-description p {
+        font-size: 18px;
+    }
+    
+    .content-title h2 {
+        font-size: 36px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .content-title h2 span {
+        font-size: 24px;
+    }
+    
+    /* 지역 세부 정보 */
+    .region-detail {
+        width: 760px;
+        left: 40px !important;
+        right: 40px !important;
+    }
+    
+    .detail-image img {
+        height: 450px;
+    }
+    
+    .detail-content {
+        padding: 50px;
+        gap: 25px;
+    }
+    
+    .detail-title {
+        font-size: 24px;
+    }
+    
+    .detail-description {
+        font-size: 16px;
+    }
+}
+
+/* 768px 이하 (모바일) */
+@media (max-width: 768px) {
+    /* 히어로 섹션 */
+    .journey-hero-content {
+        padding: 60px 20px;
+    }
+    
+    .journey-hero-top {
+        margin-top: 12vh;
+    }
+    
+    .journey-hero-bottom {
+        margin-bottom: 5vh;
+    }
+    
+    .journey-main-title {
+        font-size: 36px;
+    }
+    
+    /* 히어로 컨텐츠 레이아웃 - 왼쪽에 why apogee, 오른쪽에 4개 스텝 */
+    .journey-hero-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px 20px;
+        min-height: 100vh;
+        gap: 30px;
+    }
+    
+    .journey-hero-top {
+        flex: 1;
+        margin-top: 0;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .journey-hero-title {
+        text-align: left;
+    }
+    
+    .journey-hero-bottom {
+        flex: 2;
+        margin-bottom: 0;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .journey-steps {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: none;
+    }
+    
+    .step-number {
+        font-size: 24px;
+        margin-bottom: 14px;
+    }
+    
+    .step-content {
+        height: 90px;
+    }
+    
+    .step-title {
+        font-size: 20px;
+    }
+    
+    .step-subtitle {
+        font-size: 16px;
+    }
+    
+    .step-description {
+        font-size: 14px;
+    }
+    
+    /* 저니 상세 섹션 */
+    .journey-detail-section.collapsed {
+        height: 30vh;
+    }
+    
+    .section-content {
+        padding: 60px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    
+    .section-text-bottom {
+        flex-direction: column;
+        gap: 0;
+        align-items: start;
+        text-align: left;
+        height: 100%;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .text-right {
+        order: -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+    
+    .text-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+    
+    .text-left p {
+        font-size: 16px;
+        text-align: left;
+    }
+    
+    .text-right p {
+        font-size: 32px;
+        text-align: left;
+    }
+    
+    .text-right p:hover {
+        font-size: 36px;
+    }
+    
+    /* 확장 상태 모바일 */
+    .journey-detail-section.expanded {
+        height: 80vh;
+    }
+    
+    .section-expanded {
+        flex-direction: column;
+    }
+    
+    .expanded-image {
+        flex: 1;
+        order: 1;
+    }
+    
+    .expanded-content {
+        flex: 1;
+        order: 2;
+        padding: 40px 20px;
+        gap: 20px;
+        text-align: left;
+    }
+    
+    .content-description p {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+    
+    .content-title h2 {
+        font-size: 28px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .content-title h2 span {
+        font-size: 20px;
+    }
+    
+    .symbol img {
+        width: 40px;
+        margin-bottom: 10px;
+    }
+
+    /* 지역 소개 섹션 모바일 */
+    .region-detail {
+        width: calc(100vw - 50px);
+        max-width: calc(100vw - 50px);
+        min-width: auto;
+        padding: 0;
+        position: fixed !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: column !important;
+        gap: 0;
+        max-height: 70vh;
+        overflow: hidden;
+        border-radius: 0px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+    }
+
+    .newzealand-detail {
+        top: 50px !important;
+        bottom: auto !important;
+        flex-direction: column !important;
+    }
+
+    .newzealand-detail.active {
+        transform: none !important;
+    }
+
+    .canada-detail {
+        bottom: 50px !important;
+        top: auto !important;
+        flex-direction: column !important;
+    }
+
+    .canada-detail.active {
+        transform: none !important;
+    }
+
+    .detail-image {
+        flex: none;
+        height: 180px;
+        width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .detail-image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .detail-content {
+        flex: 1;
+        width: 100%;
+        padding: 20px 20px;
+        gap: 12px;
+        overflow-y: auto;
+        background: var(--white);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detail-title {
+        font-size: 16px;
+        margin: 0;
+        color: var(--gold);
+        line-height: 1.4;
+    }
+
+    .detail-description {
+        font-size: 11px;
+        line-height: 1.5;
+        color: var(--dark-red);
+        margin: 0;
+        width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+}

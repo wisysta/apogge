@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아포제 - 자연의 선물, 최상의 맛</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- 로딩 애니메이션 스크립트 -->
+    <script src="loading.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/xjk3oli.css">
+    <link
+        href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css"
+        rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <!-- <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#main" class="nav-link active">Main</a></li>
+                    <li><a href="#brand" class="nav-link">Brand</a></li>
+                    <li><a href="#journey" class="nav-link">Journey</a></li>
+                    <li><a href="#shop" class="nav-link">Shop</a></li>
+                    <li><a href="#news" class="nav-link">News</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+
+    <!-- 히어로 섹션 -->
+    <section class="hero" id="main">
+        <video class="hero-video display-pc" autoplay muted loop playsinline>
+            <source src="https://customer-bgy8mp6bray7e5r8.cloudflarestream.com/5bc981d74c70ac14f9f4a86f1d655e0e/downloads/default.mp4" type="video/mp4">
+        </video>
+        <video class="hero-video display-mobile" autoplay muted loop playsinline>
+            <source src="https://customer-bgy8mp6bray7e5r8.cloudflarestream.com/6d654c3b3ad1efffe110c565bbb735e0/downloads/default.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay display-pc"></div>
+        <div class="hero-content display-pc">
+            <h2 class="hero-title-ko display-pc">자연의 선물, 땅의 풍요로움에서 비롯된 최상의 맛</h2>
+            <h2 class="hero-title-ko display-mobile">자연의 선물, 땅의 풍요로움에서<br> 비롯된 최상의 맛</h2>
+            <h1 class="hero-title-en">THE ESSENCE OF SEASONS FRUITS BOUTIQUE</h1>
+        </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">SCROLL DOWN</span>
+            <div class="scroll-icon"></div>
+        </div>
+    </section>
+
+    <!-- 브랜드 소개 섹션 -->
+    <section class="brand-intro" id="brand">
+        <div class="container">
+            <div class="brand-left">
+                <h2 class="brand-title-en">
+                    <span class="brand-title-en-1">
+                    BRILLIANT FRUITS<br>
+                    of APOGEE BRING<br>
+                    </span>
+                    <div class="brand-symbol"></div>
+                    <span class="brand-title-en-2">
+                    HEALTH, FORTUNE,<br>
+                    and BEAUTY<br>
+                    </span>
+                    <span class="brand-title-highlight">To YOUR LIFE</span>
+                </h2>
+
+
+                <div class="about-apogee-btn-container">
+                    <button class="btn btn-primary about-apogee-btn">About Apogee</button>
+                </div>
+            </div>
+            <div class="brand-content">
+                <div class="brand-symbol-right">
+                    <img src="./images/symbol.svg" alt="Apogee Symbol" />
+                </div>
+                <p class="brand-description">
+                    아포제는 '정점' 또는 '절정'을 의미하며,<br>
+                    과일이 가장 완벽한 순간을 뜻합니다.<br>
+                    아포제가 제공하는 모든 과일은 그 절정의 순간에 수확되어,<br>
+                    최상의 신선함과 맛을 고객에게 전달합니다
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 플로팅 문의하기 버튼 -->
+    <div class="floating-preorder">
+        <button class="floating-preorder-btn" onclick="openContactModal()">문의하기</button>
+    </div>
+
+    <!-- 문의하기 모달 -->
+    <div class="preorder-modal" id="contactModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-panel">
+            <button class="modal-close" onclick="closeContactModal()">CLOSE</button>
+            <div class="preorder-form">
+                <h2 class="preorder-title">contact</h2>
+                <p class="preorder-description">
+                    최상의 퀄리티의 프리미엄 과일을 먼저 경험해보세요.<br>
+                    사전구매 신청하시면 체리는 6/9일에 배송해드립니다.
+                </p>
+                
+                <!-- 개인/기업 선택 -->
+                <div class="contact-type-selection">
+                    <div class="contact-type-buttons">
+                        <button type="button" class="contact-type-btn active" data-type="개인" onclick="selectContactType('개인')">개인</button>
+                        <button type="button" class="contact-type-btn" data-type="기업" onclick="selectContactType('기업')">기업</button>
+                    </div>
+                </div>
+                
+                <form class="preorder-form-content" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" id="nameLabel">성함</label>
+                        <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">전화번호</label>
+                        <input type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" name="message" placeholder="문의 내용을 입력하세요" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="checkmark"></span>
+                            개인정보 수집 및 이용 동의
+                        </label>
+                        <button type="button" class="privacy-detail-btn" onclick="openPrivacyModal()">내용 확인</button>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary modal-submit-btn">문의하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개인정보 처리방침 모달 -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="modal-overlay"></div>
+        <div class="privacy-modal-panel">
+            <button class="modal-close" onclick="closePrivacyModal()">CLOSE</button>
+            <div class="privacy-modal-content">
+                <h2 class="privacy-modal-title">개인정보 수집 및 이용 동의</h2>
+                
+                <div class="privacy-content">
+                    <div class="privacy-section">
+                        <h3>1. 개인정보의 수집 이용목적</h3>
+                        <p>회사 및 제품에 대한 궁금한 사항 문의에 대한 답변 업무 목적으로 개인정보를 처리합니다.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>2. 수집하는 개인정보 항목</h3>
+                        <p>수집정보 항목 : 성함, 전화번호</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>3. 개인정보의 보유 및 이용 기간</h3>
+                        <p>입력하신 개인정보는 문의에 대한 답변 처리가 완료된 후 1년간 보관 후 삭제 합니다. 단, 지원자께서 직접 삭제를 요청하실 경우 즉시 해당 정보를 삭제합니다.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>4. 동의를 거부할 권리 및 동의 거부에 따른 불이익</h3>
+                        <p>고객께서는 개인정보 수집 및 이용에 동의하지 않을 권리가 있습니다. 다만, 성함, 연락처 등의 개인정보를 입력하지 않은 고객문의에 대하여는 답변을 제공받지 못할 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="privacy-modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closePrivacyModal()">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="agreeAndClosePrivacyModal()">동의하고 닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 제품 섹션 -->
+    <section class="bw-product-section" id="shop">
+        <div class="bw-product-section-overlay"></div>
+        <div class="container">
+            <div class="bw-product-header">
+                <h2 class="bw-product-section-title">CERZIA CHERRY</h2>
+                <p class="bw-product-section-description">자연의 선물<br>땅의 풍요로움에서 비롯된 최상의 맛</p>
+                <div class="go-product-btn-container display-pc">
+                    <button class="btn btn-primary go-product-btn">GO PRODUCT</button>
+                </div>
+            </div>
+            
+            <div class="swiper bw-product-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-101.jpg" alt="ROYAL BERRY">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-102.jpg" alt="ROYAL BERRY">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-103.jpg" alt="GOLDEN GRAPE">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-104.jpg" alt="PREMIUM PEACH">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-105.jpg" alt="LUXURY MANGO">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-106.jpg" alt="EXOTIC FRUIT">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-107.jpg" alt="EXOTIC FRUIT">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="bw-product-card">
+                            <div class="bw-product-image">
+                                <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/product-108.jpg" alt="EXOTIC FRUIT">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 페이지네이션 -->
+                <div class="bw-swiper-pagination"></div>
+            </div>
+            <div class="go-product-btn-container display-mobile">
+                <button class="btn btn-primary go-product-btn">GO PRODUCT</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로세스 섹션 -->
+    <section class="process-section" id="journey">
+        <div class="container">
+            <div class="process-image-area">
+                <div class="process-image-container">
+                    <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/journey-01.jpg" alt="Careful Harvest" class="process-image active" data-step="1">
+                    <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/journey-02.jpg" alt="Premium Selection" class="process-image" data-step="2">
+                    <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/journey-04.jpg" alt="Fresh Packing" class="process-image" data-step="3">
+                    <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/journey-03.jpg" alt="To Your Door" class="process-image" data-step="4">
+                </div>
+                <div class="read-more-btn-container">
+                    <a href="/journey.html">
+                        <button class="btn btn-primary read-more-btn">READ MORE</button>
+                    </a>
+                </div>
+            </div>
+            <div class="process-content-area">
+                <div class="process-description display-pc">
+                    <p>과일의 한 알 한 알은 자연이 만든 결정체이며,<br>
+                    시간을 품은 결과물입니다. 과일을 무게로 나누는 것이 일반적이지만,<br>
+                    아포제는 무게가 아니라 각 개체의 완벽함을 기준으로 삼습니다.<br>
+                    그 가치를 지키기 위해, 모든 과일을 무게가 아닌 '알' 단위로 검수합니다.</p>
+                </div>
+                <div class="process-description display-mobile">
+                    <p>과일의 한 알 한 알은 자연이 만든 결정체이며,<br>
+                    시간을 품은 결과물입니다. <br>과일을 무게로 나누는 것이 일반적이지만,<br>
+                    무게가 아니라 각 개체의 완벽함을 기준으로 삼습니다.<br>
+                    그 가치를 지키기 위해, <br>모든 과일을 무게가 아닌 '알' 단위로 검수합니다.</p>
+                </div>
+                <div class="process-steps">
+                    <div class="process-step active" data-step="1">
+                        <div class="process-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="Process Icon">
+                        </div>
+                        <h3><span class="text-roller">Careful Harvest</span></h3>
+                    </div>
+                    <div class="process-step" data-step="2">
+                        <div class="process-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="Process Icon">
+                        </div>
+                        <h3><span class="text-roller">Premium Selection</span></h3>
+                    </div>
+                    <div class="process-step" data-step="3">
+                        <div class="process-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="Process Icon">
+                        </div>
+                        <h3><span class="text-roller">Fresh Packing</span></h3>
+                    </div>
+                    <div class="process-step" data-step="4">
+                        <div class="process-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="Process Icon">
+                        </div>
+                        <h3><span class="text-roller">To Your Door</span></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 지역 소개 섹션 -->
+    <section class="origin-section">
+        <div class="container">
+            <div class="origin-map">
+                <div class="map-container" id="map-container">
+                    <!-- SVG가 여기에 동적으로 로드됩니다 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 뉴스 & FAQ 섹션 -->
+    <section class="news-faq-section" id="news">
+        <div class="container">
+            <div class="news-section">
+                <h2 class="section-title">NEWS</h2>
+                <div class="news-items">
+                    <!-- <article class="news-item featured">
+                        <h3>[가격 인상 안내] CERZIA 체리 5구</h3>
+                        <div class="news-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="News Icon">
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h3>[현대백화점] 입점 안내</h3>
+                        <div class="news-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="News Icon">
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h3>[제품 출시 안내] CERZIA 제품 출시</h3>
+                        <div class="news-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="News Icon">
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <h3>[제품 출시 안내] CERZIA 제품 출시</h3>
+                        <div class="news-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="News Icon">
+                        </div>
+                    </article> -->
+                </div>
+            </div>
+            <div class="faq-section" id="faq">
+                <h2 class="section-title">FAQ</h2>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <h3>자주하는 질문</h3>
+                        <div class="faq-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="FAQ Icon">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="./images/footer-logo.svg" alt="Apogée Logo">
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#">INSTAGRAM</a>
+                    <a href="#">YOUTUBE</a>
+                    <a href="#">NAVER</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">ABOUT</a>
+                    <a href="#">AGREEMENT</a>
+                    <a href="#">PRIVACY POLICY</a>
+                </div>
+                <div class="footer-info">
+                    <p>(주) 세르지아 / 사업자 번호 : 830-88-03274</p>
+                    <p>주소 : 서울 특별시 서초구 서초중앙로18, 410</p>
+                    <p>대표자 : 공준혁 / 대표번호 : 1660-3590</p>
+                    <p>통신판매사업자번호 : 2024-서울관악-1471 [통신판매업 정보확인]</p>
+                    <p>cerezia.kr@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

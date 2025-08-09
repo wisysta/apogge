@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - 아포제</title>
+    <link rel="stylesheet" href="faq.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/xjk3oli.css">
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img src="./images/main-logo.svg" alt="Apogée Logo">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/index.html#main" class="nav-link">MAIN</a></li>
+                    <li><a href="/brand.html" class="nav-link">BRAND</a></li>
+                    <li><a href="/journey.html" class="nav-link">JOURNEY</a></li>
+                    <li><a href="/index.html#shop" class="nav-link">SHOP</a></li>
+                    <li><a href="/index.html#news" class="nav-link">NEWS</a></li>
+                    <li><a href="/faq.html" class="nav-link active">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- FAQ 메인 콘텐츠 -->
+    <main class="faq-main">
+        <div class="container">
+            <!-- FAQ 헤더 -->
+            <div class="faq-header">
+                <h1 class="faq-title">FAQ</h1>
+                <p class="faq-subtitle">
+                    도움이 필요할 땐,<br>
+                    <b>직접 문의</b>하거나 <b>자주 묻는 질문</b>을 확인해 보세요.
+                </p>
+            </div>
+
+            <!-- 연락처 정보 -->
+            <div class="contact-info">
+                <!-- 1그리드: 고객센터 -->
+                <div class="contact-item">
+                    <div class="contact-item-header">
+                        <h3>아포제 고객센터</h3>
+                        <a href="tel:1660-3590" class="contact-number">1660-3590</a>
+                    </div>
+                    <p class="contact-time">운영시간 : 평일 09:00 ~ 18:00 (주말 및 공휴일 휴무)</p>
+                </div>
+                
+                <!-- 2그리드: 카카오톡 문의 -->
+                <div class="contact-card clickable" onclick="openKakaoChannel()">
+                    <div class="contact-content">
+                        <div class="contact-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/ico-kakao2.png" alt="카카오톡 아이콘">
+                        </div>
+                        <div class="contact-text">
+                            <h4>카카오톡 채널 문의</h4>
+                            <p>궁금한 내용은<br>카카오톡으로 문의해보세요</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3그리드: 홈페이지 문의 -->
+                <div class="contact-card clickable" onclick="openContactModal()">
+                    <div class="contact-content">
+                        <div class="contact-icon">
+                            <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/ico-apogee3.png" alt="아포제 아이콘">
+                        </div>
+                        <div class="contact-text">
+                            <h4>아포제 홈페이지 문의</h4>
+                            <p>궁금한 내용은<br>홈페이지로 문의해보세요</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 목록 -->
+            <div class="faq-section">
+                <h2 class="section-title">자주 묻는 질문</h2>
+                <div class="faq-list" id="faqList">
+                    <!-- FAQ 항목들이 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 문의하기 모달 -->
+    <div class="preorder-modal" id="contactModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-panel">
+            <button class="modal-close" onclick="closeContactModal()">CLOSE</button>
+            <div class="preorder-form">
+                <h2 class="preorder-title">contact</h2>
+                <p class="preorder-description">
+                    최상의 퀄리티의 프리미엄 과일을 먼저 경험해보세요.<br>
+                    사전구매 신청하시면 체리는 6/9일에 배송해드립니다.
+                </p>
+                
+                <!-- 개인/기업 선택 -->
+                <div class="contact-type-selection">
+                    <div class="contact-type-buttons">
+                        <button type="button" class="contact-type-btn active" data-type="개인" onclick="selectContactType('개인')">개인</button>
+                        <button type="button" class="contact-type-btn" data-type="기업" onclick="selectContactType('기업')">기업</button>
+                    </div>
+                </div>
+                
+                <form class="preorder-form-content" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" id="nameLabel">성함</label>
+                        <input type="text" id="name" name="name" placeholder="성함을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">전화번호</label>
+                        <input type="tel" id="phone" name="phone" placeholder="전화번호를 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" name="message" placeholder="문의 내용을 입력하세요" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="checkmark"></span>
+                            개인정보 수집 및 이용 동의
+                        </label>
+                        <button type="button" class="privacy-detail-btn" onclick="openPrivacyModal()">내용 확인</button>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary modal-submit-btn">문의하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 개인정보 처리방침 모달 -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="modal-overlay"></div>
+        <div class="privacy-modal-panel">
+            <button class="modal-close" onclick="closePrivacyModal()">CLOSE</button>
+            <div class="privacy-modal-content">
+                <h2 class="privacy-modal-title">개인정보 수집 및 이용 동의</h2>
+                
+                <div class="privacy-content">
+                    <div class="privacy-section">
+                        <h3>1. 개인정보의 수집 이용목적</h3>
+                        <p>회사 및 제품에 대한 궁금한 사항 문의에 대한 답변 업무 목적으로 개인정보를 처리합니다.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>2. 수집하는 개인정보 항목</h3>
+                        <p>수집정보 항목 : 성함, 전화번호</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>3. 개인정보의 보유 및 이용 기간</h3>
+                        <p>입력하신 개인정보는 문의에 대한 답변 처리가 완료된 후 1년간 보관 후 삭제 합니다. 단, 지원자께서 직접 삭제를 요청하실 경우 즉시 해당 정보를 삭제합니다.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h3>4. 동의를 거부할 권리 및 동의 거부에 따른 불이익</h3>
+                        <p>고객께서는 개인정보 수집 및 이용에 동의하지 않을 권리가 있습니다. 다만, 성함, 연락처 등의 개인정보를 입력하지 않은 고객문의에 대하여는 답변을 제공받지 못할 수 있습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="privacy-modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closePrivacyModal()">취소</button>
+                    <button type="button" class="btn btn-primary" onclick="agreeAndClosePrivacyModal()">동의하고 닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="faq.js"></script>
+</body>
+</html>
