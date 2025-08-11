@@ -942,7 +942,16 @@ function initializeMainPage() {
     }
 
     // 모든 기능 초기화
+    let isInitialized = false;
+
     function init() {
+        if (isInitialized) {
+            console.log("init() 함수가 이미 실행되었습니다.");
+            return;
+        }
+
+        isInitialized = true;
+
         scrollIndicator();
         scrollAnimations();
         processStepEffects();
