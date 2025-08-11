@@ -688,17 +688,59 @@ function initializeMainPage() {
         });
     }
 
-    // 뉴스 아이템 클릭 효과
-    function newsItemEffects() {
-        const newsItems = document.querySelectorAll(".news-item");
+    // 뉴스 데이터 로드 및 렌더링
+    async function loadNewsItems() {
+        try {
+            const response = await fetch(
+                "https://before-cafe24.vercel.app/api/apogee/news?page=1&limit=5"
+            );
 
-        newsItems.forEach((item) => {
+            if (response.ok) {
+                const newsData = await response.json();
+
+                if (newsData.success && newsData.data) {
+                    renderNewsItems(newsData.data);
+                }
+            }
+        } catch (error) {
+            console.error("뉴스 로드 중 오류 발생:", error);
+        }
+    }
+
+    // 뉴스 아이템 렌더링
+    function renderNewsItems(newsItems) {
+        const newsContainer = document.querySelector(".news-items");
+        if (!newsContainer) return;
+
+        // 뉴스 아이템 생성
+        newsItems.forEach((item, index) => {
+            const newsArticle = document.createElement("article");
+            newsArticle.className =
+                index === 0 ? "news-item featured" : "news-item";
+
+            if (item.link) {
+                newsArticle.setAttribute("data-link", item.link);
+            }
+
+            newsArticle.innerHTML = `
+                <h3>${item.title}</h3>
+                <div class="news-icon">
+                    <img src="https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/symbol-small.svg" alt="News Icon">
+                </div>
+            `;
+
+            newsContainer.appendChild(newsArticle);
+        });
+
+        // 뉴스 아이템 이벤트 설정
+        const newsItemElements = document.querySelectorAll(".news-item");
+        newsItemElements.forEach((item) => {
             item.addEventListener("click", function () {
-                // 실제로는 뉴스 상세 페이지로 이동하는 로직을 여기에 추가
-                console.log(
-                    "뉴스 아이템 클릭:",
-                    this.querySelector("h3").textContent
-                );
+                const link = this.getAttribute("data-link");
+
+                if (link) {
+                    window.open(link, "_blank");
+                }
 
                 // 클릭 효과
                 this.style.transform = "scale(0.98)";
@@ -897,7 +939,7 @@ function initializeMainPage() {
         processStepEffects();
         productImageEffects();
         mapDotAnimations();
-        newsItemEffects();
+        loadNewsItems(); // 뉴스 데이터 로드 및 렌더링
         enhanceButtonEffects();
         mobileMenuToggle();
         pageLoadProgress();
