@@ -62,7 +62,9 @@ function initializeMainPage() {
 
         // 화면 크기에 따라 다른 SVG 파일 선택 (768px 이하는 모바일)
         const isMobile = window.innerWidth <= 768;
-        const svgPath = isMobile ? "./images/map-mo.svg" : "./images/map.svg";
+        const svgPath = isMobile
+            ? "https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/map-mo-fin.svg"
+            : "https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/map-pc.svg";
 
         fetch(svgPath)
             .then((response) => response.text())
