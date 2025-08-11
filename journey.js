@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // 화면 크기에 따라 다른 SVG 파일 선택
         const isMobile = window.innerWidth <= 768;
         const svgPath = isMobile
-            ? "https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/map-mo-fin.svg"
+            ? "https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/map-mo-final.svg"
             : "https://ecimg.cafe24img.com/pg2069b88099925051/cerezia/images/map-pc.svg";
 
         fetch(svgPath)
