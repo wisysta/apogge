@@ -54,7 +54,16 @@ if (window.visualViewport) {
 
 // DOM 로드 완료 후 실행
 // 로딩 완료 후 메인 페이지 초기화
+let isMainPageInitialized = false;
+
 function initializeMainPage() {
+    // 이미 초기화되었으면 중복 실행 방지
+    if (isMainPageInitialized) {
+        console.log("메인 페이지가 이미 초기화되었습니다.");
+        return;
+    }
+
+    isMainPageInitialized = true;
     // SVG 동적 로드 및 애니메이션 설정
     function loadMapSVG() {
         const mapContainer = document.getElementById("map-container");
